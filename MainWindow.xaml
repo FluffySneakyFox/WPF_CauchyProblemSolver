@@ -1,0 +1,63 @@
+﻿<Window x:Class="WPF_CauchyProblemSolver.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_CauchyProblemSolver"
+        mc:Ignorable="d"
+        Title="Cauchy Problem Solver" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--Data inputs part part-->
+        <WrapPanel Grid.Row="1" Grid.Column="1" >
+            <TextBlock Margin="10 5 10 5">Equation:</TextBlock>
+            <TextBox Margin="10 5 10 5" Width="150"></TextBox>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock Margin="10 5 10 5">Start:</TextBlock>
+                <TextBox Margin="10 0 10 10" Width="75"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock Margin="10 5 10 5">End:</TextBlock>
+                <TextBox Margin="10 0 10 10" Width="75"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock Margin="10 5 10 5">Step:</TextBlock>
+                <TextBox Margin="10 0 10 10" Width="75"></TextBox>
+            </WrapPanel>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+            <TextBlock Margin="10 5 10 5">Method:</TextBlock>
+            <ComboBox SelectedIndex="0">
+                <ComboBoxItem>Euler (1)</ComboBoxItem>
+                <ComboBoxItem>Modified Euler (2)</ComboBoxItem>
+                <ComboBoxItem>Runge-Cutta (2)</ComboBoxItem>
+                <ComboBoxItem>Runge-Cutta (4)</ComboBoxItem>
+            </ComboBox>
+        </WrapPanel>
+
+        <!--Buttons part-->
+        <Button Grid.Row="4" Grid.Column="1" Margin="10">Calculate</Button>
+
+        <!--Graphics part-->
+        
+    </Grid>
+</Window>
