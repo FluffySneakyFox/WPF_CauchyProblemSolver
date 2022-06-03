@@ -22,7 +22,7 @@ namespace WPF_CauchyProblemSolver
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeCompo
         }
     }
 }
