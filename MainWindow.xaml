@@ -26,27 +26,27 @@
         <!--Data inputs part part-->
         <WrapPanel Grid.Row="1" Grid.Column="1" >
             <TextBlock Margin="10 5 10 5">Equation:</TextBlock>
-            <TextBox Margin="10 5 10 5" Width="150"></TextBox>
+            <TextBox Margin="10 5 10 5" Width="150" Name="EquationTB"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <WrapPanel Orientation="Vertical">
                 <TextBlock Margin="10 5 10 5">Start:</TextBlock>
-                <TextBox Margin="10 0 10 10" Width="75"></TextBox>
+                <TextBox Margin="10 0 10 10" Width="75" Name="StartTB"></TextBox>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
                 <TextBlock Margin="10 5 10 5">End:</TextBlock>
-                <TextBox Margin="10 0 10 10" Width="75"></TextBox>
+                <TextBox Margin="10 0 10 10" Width="75" Name="EndTB"></TextBox>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
                 <TextBlock Margin="10 5 10 5">Step:</TextBlock>
-                <TextBox Margin="10 0 10 10" Width="75"></TextBox>
+                <TextBox Margin="10 0 10 10" Width="75" Name="StepTB"></TextBox>
             </WrapPanel>
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
             <TextBlock Margin="10 5 10 5">Method:</TextBlock>
-            <ComboBox SelectedIndex="0">
+            <ComboBox SelectedIndex="0" Name="MethodCB">
                 <ComboBoxItem>Euler (1)</ComboBoxItem>
                 <ComboBoxItem>Modified Euler (2)</ComboBoxItem>
                 <ComboBoxItem>Runge-Cutta (2)</ComboBoxItem>
@@ -55,7 +55,7 @@
         </WrapPanel>
 
         <!--Buttons part-->
-        <Button Grid.Row="4" Grid.Column="1" Margin="10">Calculate</Button>
+        <Button Grid.Row="4" Grid.Column="1" Margin="10" Click="Calc_Click">Calculate</Button>
 
         <!--Graphics part-->
         

@@ -24,5 +24,17 @@ namespace WPF_CauchyProblemSolver
         {
             InitializeComponent();
         }
+
+        private void Calc_Click(object sender, RoutedEventArgs e)
+        {
+            //Get data from form
+
+
+            //Solve problem
+
+
+            //Draw graph
+
+        }
     }
 }
