@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:local="clr-namespace:WPF_CauchyProblemSolver"
         mc:Ignorable="d"
-        Title="Cauchy Problem Solver" Height="600" Width="800">
+        Title="Cauchy Problem Solver" Height="400" Width="700">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
@@ -24,12 +26,23 @@
         </Grid.ColumnDefinitions>
 
         <!--Data inputs part part-->
-        <WrapPanel Grid.Row="1" Grid.Column="1" >
-            <TextBlock Margin="10 5 10 5">Equation:</TextBlock>
-            <TextBox Margin="10 5 10 5" Width="150" Name="EquationTB"></TextBox>
+        <WrapPanel Grid.Row="1" Grid.Column="1">
+            
         </WrapPanel>
 
-        <WrapPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Margin="10 5 10 5">Equation:</TextBlock>
+                <TextBox Margin="10 5 10 5" Width="150" Name="EquationTB"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal">
+                <TextBlock Margin="10 5 10 5">Value for Cauchy problem:</TextBlock>
+                <TextBox Margin="10 5 10 5" Width="75" Name="CauchyTB"></TextBox>
+            </WrapPanel>
+        </WrapPanel>
+        <!---->
+
+        <WrapPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
             <WrapPanel Orientation="Vertical">
                 <TextBlock Margin="10 5 10 5">Start:</TextBlock>
                 <TextBox Margin="10 0 10 10" Width="75" Name="StartTB"></TextBox>
@@ -44,7 +57,7 @@
             </WrapPanel>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+        <WrapPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
             <TextBlock Margin="10 5 10 5">Method:</TextBlock>
             <ComboBox SelectedIndex="0" Name="MethodCB">
                 <ComboBoxItem>Euler (1)</ComboBoxItem>
@@ -58,6 +71,6 @@
         <Button Grid.Row="4" Grid.Column="1" Margin="10" Click="Calc_Click">Calculate</Button>
 
         <!--Graphics part-->
-        
+        <oxy:PlotView Grid.Row="1" Grid.Column="3" Margin="10 10" Grid.RowSpan="4" Height="300" Width="300" Name="oxyPlotCanvas"/>
     </Grid>
 </Window>
