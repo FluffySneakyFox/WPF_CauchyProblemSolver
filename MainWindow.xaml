@@ -31,9 +31,9 @@
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
-            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <TextBlock Margin="10 5 10 5">Equation:</TextBlock>
-                <TextBox Margin="10 5 10 5" Width="150" Name="EquationTB"></TextBox>
+                <TextBox Margin="10 5 10 5" Width="165" Name="EquationTB"></TextBox>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal">
                 <TextBlock Margin="10 5 10 5">Value for Cauchy problem:</TextBlock>

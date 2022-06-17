@@ -22,7 +22,7 @@ namespace WPF_CauchyProblemSolver
                     calc = new Euler();
                     break;
                 default:
-                    _ = MessageBox.Show("Not implemented method!", "Error", MessageBoxButton.OK,MessageBoxImage.Error);
+                    _ = MessageBox.Show("Not implemented method!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
             }
             return calc;
@@ -30,18 +30,15 @@ namespace WPF_CauchyProblemSolver
 
         private void DrawGraph(double start, double step, double[] dots)
         {
-            //Clear old dots
-           /* if(oxyPlotCanvas.Model.Series != null)
-            {
-                oxyPlotCanvas.Model.Series.Clear();
-            }*/
-
-            PlotModel plotModel = new PlotModel(){Title = "Graph"};
+            //Oxyplot preparation
+            PlotModel plotModel = new PlotModel() { Title = "Cauchy ptoblem solution" };
             LineSeries Series = new LineSeries();
+            //Adding calculated dots to series
             for (int i = 0; i < dots.Length; i++)
             {
-                Series.Points.Add(new DataPoint(start+step*i, dots[i]));
+                Series.Points.Add(new DataPoint(start + step * i, dots[i]));
             }
+            //Attaching data and drawing
             plotModel.Series.Add(Series);
             oxyPlotCanvas.Model = plotModel;
         }
@@ -49,22 +46,18 @@ namespace WPF_CauchyProblemSolver
         private void Calc_Click(object sender, RoutedEventArgs e)
         {
             //Get data from form
-            double
-                start = Convert.ToDouble(StartTB.Text),
-                end = Convert.ToDouble(EndTB.Text),
-                step = Convert.ToDouble(StepTB.Text),
-                f0 = Convert.ToDouble(CauchyTB.Text);
-            ICalculator calc = GetCalculator();
-
-            
-            Func<double, double> testFunc = x => 1/(2*Math.Sqrt(x));
-            //https://github.com/Firestorm01X2/MathDotNetTest/blob/main/MathDotNetTest/Program.cs
-
-            //Solve problem
-            double[] diffEqDots = calc.Calculate(start, end, step, testFunc, f0);
-
+            double start = Convert.ToDouble(StartTB.Text);
+            double end = Convert.ToDouble(EndTB.Text);
+            double step = Convert.ToDouble(StepTB.Text);
+            double f0 = Convert.ToDouble(CauchyTB.Text);
+            //Get calculator with choosed method
+            ICalculator Calculator = GetCalculator();
+            //1-param diff equation written as delegate
+            Func<double, double> testFunc = x => -1.0 / (x * x);
+            //Solve problem (calculate dots coordinates)
+            double[] diffEqDots = Calculator.Calculate(start, end, step, testFunc, f0);
             //Draw graph
-            DrawGraph(start,step,diffEqDots);
+            DrawGraph(start, step, diffEqDots);
         }
     }
 }
