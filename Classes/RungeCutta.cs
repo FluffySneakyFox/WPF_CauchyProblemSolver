@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_CauchyProblemSolver.Classes
 {
-    class EulerMod : ICalculator
+    class RungeCutta : ICalculator
     {
         public double[] Calculate(double start, double end, double step, Func<double, double> diffEquation, double f0)
         {
@@ -16,10 +16,9 @@ namespace WPF_CauchyProblemSolver.Classes
             //Cauchy problem
             resultDots[0] = f0;
             //Calc
-            for (int i = 1; i < dotsAmount; i++)
-            {
-                resultDots[i] = resultDots[i - 1] + step * ((diffEquation(start + step * (i - 1)) + diffEquation(start + step * i)) / 2);
-            }
+            
+
+
             return resultDots;
         }
     }

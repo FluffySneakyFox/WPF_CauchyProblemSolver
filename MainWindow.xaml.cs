@@ -56,7 +56,7 @@ namespace WPF_CauchyProblemSolver
             //Get calculator with choosed method
             ICalculator Calculator = GetCalculator();
             //1-param diff equation written as delegate
-            Func<double, double> testFunc = x =>2*x;
+            Func<double, double> testFunc = x => 3 * Math.Pow(x, 2) + 6 * x - 4 * Math.Pow(x, 3);
             //Solve problem (calculate dots coordinates)
             double[] diffEqDots = Calculator.Calculate(start, end, step, testFunc, f0);
             //Draw graph

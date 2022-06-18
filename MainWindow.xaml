@@ -62,7 +62,6 @@
             <ComboBox SelectedIndex="0" Name="MethodCB">
                 <ComboBoxItem>Euler (1)</ComboBoxItem>
                 <ComboBoxItem>Modified Euler (2)</ComboBoxItem>
-                <ComboBoxItem>Runge-Cutta (2)</ComboBoxItem>
                 <ComboBoxItem>Runge-Cutta (4)</ComboBoxItem>
             </ComboBox>
         </WrapPanel>
