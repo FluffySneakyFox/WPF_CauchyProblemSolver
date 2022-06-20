@@ -13,12 +13,18 @@ namespace WPF_CauchyProblemSolver.Classes
             //Data prep
             int dotsAmount = Convert.ToInt32((end - start) / step) + 1;
             double[] resultDots = new double[dotsAmount];
+            double[] k = new double[4];
             //Cauchy problem
             resultDots[0] = f0;
             //Calc
-            
-
-
+            for (int i = 1; i < dotsAmount; i++)
+            {
+                k[0] = diffEquation(start + step * (i - 1));
+                k[1] = diffEquation(start + step * (i - 1) + step / 2);
+                k[2] = diffEquation(start + step * (i - 1) + step / 2);
+                k[3] = diffEquation(start + step * (i - 1) + step);
+                resultDots[i] = resultDots[i - 1] + step * (k[0] + 2 * k[1] + 2 * k[2] + k[3]) / 6;
+            }
             return resultDots;
         }
     }

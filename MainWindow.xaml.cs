@@ -24,6 +24,9 @@ namespace WPF_CauchyProblemSolver
                 case 1:
                     calc = new EulerMod();
                     break;
+                case 2:
+                    calc = new RungeCutta();
+                    break;
                 default:
                     _ = MessageBox.Show("Not implemented method!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
@@ -56,7 +59,7 @@ namespace WPF_CauchyProblemSolver
             //Get calculator with choosed method
             ICalculator Calculator = GetCalculator();
             //1-param diff equation written as delegate
-            Func<double, double> testFunc = x => 3 * Math.Pow(x, 2) + 6 * x - 4 * Math.Pow(x, 3);
+            Func<double, double> testFunc = x => 0.5/Math.Sqrt(x);
             //Solve problem (calculate dots coordinates)
             double[] diffEqDots = Calculator.Calculate(start, end, step, testFunc, f0);
             //Draw graph
