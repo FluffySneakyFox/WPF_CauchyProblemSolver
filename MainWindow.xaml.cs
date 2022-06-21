@@ -3,6 +3,7 @@ using System.Windows;
 using WPF_CauchyProblemSolver.Classes;
 using OxyPlot;
 using OxyPlot.Series;
+using System.Diagnostics;
 
 namespace WPF_CauchyProblemSolver
 {
@@ -61,7 +62,11 @@ namespace WPF_CauchyProblemSolver
             //1-param diff equation written as delegate
             Func<double, double> testFunc = x => 0.5 / Math.Sqrt(x);
             //Solve problem (calculate dots coordinates)
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             double[] diffEqDots = Calculator.Calculate(start, end, step, testFunc, f0);
+            sw.Stop();
+            TxtBLTimeOfCalc.Text = sw.Elapsed.TotalMilliseconds.ToString();
             //_ = MessageBox.Show(diffEqDots[diffEqDots.Length - 1].ToString());
             //Draw graph
             DrawGraph(start, step, diffEqDots);

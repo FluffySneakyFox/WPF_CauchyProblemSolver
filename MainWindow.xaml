@@ -66,12 +66,10 @@
             <!--Status and info bars-->
             <WrapPanel Orientation="Horizontal">
                 <WrapPanel Orientation="Vertical" Margin="0 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="White">
-                    <TextBlock Margin="0 0 5 0" HorizontalAlignment="Right">Status:</TextBlock>
-                    <TextBlock Margin="0 0 5 0" HorizontalAlignment="Right">Time of calculation (ms):</TextBlock>
+                    <TextBlock Margin="0 0 5 0" Height="22" FontSize="16px" HorizontalAlignment="Right">Time of calculation (ms):</TextBlock>
                 </WrapPanel>
                 <WrapPanel Orientation="Vertical" Margin="0 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="White">
-                    <TextBlock Margin="0 0 0 0">Input data</TextBlock>
-                    <TextBlock Margin="0 0 0 0">0,0</TextBlock>
+                    <TextBlock Margin="0 0 0 0" Height="22" FontSize="16px" Name="TxtBLTimeOfCalc">0,0</TextBlock>
                 </WrapPanel>
             </WrapPanel>
         </WrapPanel>
