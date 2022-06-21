@@ -6,70 +6,72 @@
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:local="clr-namespace:WPF_CauchyProblemSolver"
         mc:Ignorable="d"
-        Title="Cauchy Problem Solver" Height="400" Width="700">
-    
+        Title="Cauchy Problem Solver"
+        MinHeight="400"
+        Height="400"
+        MinWidth="600"
+        Width="600"
+        SizeToContent="WidthAndHeight"
+        Background="LightGray"
+        >
+
+    <!--Grid-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="20"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <!--Data inputs part part-->
-        <WrapPanel Grid.Row="1" Grid.Column="1">
-            
+
+        <!--Left side-->
+        <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10" HorizontalAlignment="Right" Background="White">
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <!--Captions-->
+                <WrapPanel Orientation="Vertical">
+                    <TextBlock Margin="10 5 5 5" Height="22" HorizontalAlignment="Right" FontSize="16px">Equation:</TextBlock>
+                    <TextBlock Margin="10 5 5 5" Height="22" HorizontalAlignment="Right" FontSize="16px">Start:</TextBlock>
+                    <TextBlock Margin="10 5 5 5" Height="22" HorizontalAlignment="Right" FontSize="16px">End:</TextBlock>
+                    <TextBlock Margin="10 5 5 5" Height="22" HorizontalAlignment="Right" FontSize="16px">Step:</TextBlock>
+                    <TextBlock Margin="10 5 5 5" Height="22" HorizontalAlignment="Right" FontSize="16px">Initial value:</TextBlock>
+                    <TextBlock Margin="10 5 5 5" Height="22" HorizontalAlignment="Right" FontSize="16px">Method:</TextBlock>
+                </WrapPanel>
+                <!--Txt boxes-->
+                <WrapPanel Orientation="Vertical">
+                    <TextBox Margin="0 5 10 5" Width="150" Height="22" HorizontalAlignment="Left" FontSize="16px" Name="EquationTB"></TextBox>
+                    <TextBox Margin="0 5 10 5" Width="150" Height="22" HorizontalAlignment="Left" FontSize="16px" Name="StartTB"></TextBox>
+                    <TextBox Margin="0 5 10 5" Width="150" Height="22" HorizontalAlignment="Left" FontSize="16px" Name="EndTB"></TextBox>
+                    <TextBox Margin="0 5 10 5" Width="150" Height="22" HorizontalAlignment="Left" FontSize="16px" Name="StepTB"></TextBox>
+                    <TextBox Margin="0 5 10 5" Width="150" Height="22" HorizontalAlignment="Left" FontSize="16px" Name="CauchyTB"></TextBox>
+                    <ComboBox Margin="0 5 10 5" Width="150" Height="22" HorizontalAlignment="Left" FontSize="16px" SelectedIndex="0" Padding="5 0 0 0" Name="MethodCB">
+                        <ComboBoxItem>Euler (1)</ComboBoxItem>
+                        <ComboBoxItem>Modified Euler (2)</ComboBoxItem>
+                        <ComboBoxItem>Runge-Cutta (4)</ComboBoxItem>
+                    </ComboBox>
+                </WrapPanel>
+            </WrapPanel>
+            <!--Buttons-->
+            <WrapPanel Orientation="Vertical" Margin="10 5 10 5" Width="auto">
+                <Button Click="Calc_Click" Width="220" Margin="0 5 10 0" FontSize="16px">Calculate</Button>
+                <Button Click="Save_Click" Width="220" Margin="0 5 10 0" FontSize="16px">Save results</Button>
+            </WrapPanel>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
-            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <TextBlock Margin="10 5 10 5">Equation:</TextBlock>
-                <TextBox Margin="10 5 10 5" Width="165" Name="EquationTB"></TextBox>
-            </WrapPanel>
+        <!--Right side-->
+        <WrapPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" Margin="10" HorizontalAlignment="Left">
+            <oxy:PlotView Margin="0 0 0 0" Height="300" Width="300" Name="oxyPlotCanvas"/>
+            <!--Status and info bars-->
             <WrapPanel Orientation="Horizontal">
-                <TextBlock Margin="10 5 10 5">Value for Cauchy problem:</TextBlock>
-                <TextBox Margin="10 5 10 5" Width="75" Name="CauchyTB"></TextBox>
+                <WrapPanel Orientation="Vertical" Margin="0 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="White">
+                    <TextBlock Margin="0 0 5 0" Height="22" FontSize="16px" HorizontalAlignment="Right">Time of calculation (ms):</TextBlock>
+                </WrapPanel>
+                <WrapPanel Orientation="Vertical" Margin="0 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Background="White">
+                    <TextBlock Margin="0 0 0 0" Height="22" FontSize="16px" Name="TxtBLTimeOfCalc">0,0</TextBlock>
+                </WrapPanel>
             </WrapPanel>
         </WrapPanel>
-        <!---->
-
-        <WrapPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-            <WrapPanel Orientation="Vertical">
-                <TextBlock Margin="10 5 10 5">Start:</TextBlock>
-                <TextBox Margin="10 0 10 10" Width="75" Name="StartTB"></TextBox>
-            </WrapPanel>
-            <WrapPanel Orientation="Vertical">
-                <TextBlock Margin="10 5 10 5">End:</TextBlock>
-                <TextBox Margin="10 0 10 10" Width="75" Name="EndTB"></TextBox>
-            </WrapPanel>
-            <WrapPanel Orientation="Vertical">
-                <TextBlock Margin="10 5 10 5">Step:</TextBlock>
-                <TextBox Margin="10 0 10 10" Width="75" Name="StepTB"></TextBox>
-            </WrapPanel>
-        </WrapPanel>
-
-        <WrapPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-            <TextBlock Margin="10 5 10 5">Method:</TextBlock>
-            <ComboBox SelectedIndex="0" Name="MethodCB">
-                <ComboBoxItem>Euler (1)</ComboBoxItem>
-                <ComboBoxItem>Modified Euler (2)</ComboBoxItem>
-                <ComboBoxItem>Runge-Cutta (4)</ComboBoxItem>
-            </ComboBox>
-        </WrapPanel>
-
-        <!--Buttons part-->
-        <Button Grid.Row="4" Grid.Column="1" Margin="10" Click="Calc_Click">Calculate</Button>
-
-        <!--Graphics part-->
-        <oxy:PlotView Grid.Row="1" Grid.Column="3" Margin="10 10" Grid.RowSpan="4" Height="300" Width="300" Name="oxyPlotCanvas"/>
     </Grid>
 </Window>

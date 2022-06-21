@@ -3,6 +3,7 @@ using System.Windows;
 using WPF_CauchyProblemSolver.Classes;
 using OxyPlot;
 using OxyPlot.Series;
+using System.Diagnostics;
 
 namespace WPF_CauchyProblemSolver
 {
@@ -37,7 +38,7 @@ namespace WPF_CauchyProblemSolver
         private void DrawGraph(double start, double step, double[] dots)
         {
             //Oxyplot preparation
-            PlotModel plotModel = new PlotModel() { Title = "Cauchy ptoblem solution" };
+            PlotModel plotModel = new PlotModel() { Title = EquationTB.Text };
             LineSeries Series = new LineSeries();
             //Adding calculated dots to series
             for (int i = 0; i < dots.Length; i++)
@@ -59,11 +60,22 @@ namespace WPF_CauchyProblemSolver
             //Get calculator with choosed method
             ICalculator Calculator = GetCalculator();
             //1-param diff equation written as delegate
-            Func<double, double> testFunc = x => 0.5/Math.Sqrt(x);
+            Func<double, double> testFunc = x => 0.5 / Math.Sqrt(x);
             //Solve problem (calculate dots coordinates)
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             double[] diffEqDots = Calculator.Calculate(start, end, step, testFunc, f0);
+            sw.Stop();
+            TxtBLTimeOfCalc.Text = sw.Elapsed.TotalMilliseconds.ToString();
+            //_ = MessageBox.Show(diffEqDots[diffEqDots.Length - 1].ToString());
             //Draw graph
             DrawGraph(start, step, diffEqDots);
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            //patch
+            _ = MessageBox.Show("Not implemented yet.", "Error", MessageBoxButton.OK,MessageBoxImage.Error);
         }
     }
 }
